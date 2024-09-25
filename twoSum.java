@@ -1,6 +1,16 @@
+class ListNode {
+    int val;
+    ListNode next;
+    
+    ListNode(int val) {
+        this.val = val;
+        this.next = null;
+    }
+}
+
 class Solution {
-    public static void main(String[] args){
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode dummyHead = new ListNode(0);
         ListNode tail = dummyHead;
         int carry = 0;
@@ -21,8 +31,29 @@ class Solution {
             l2 = (l2 != null) ? l2.next : null;
         }
 
-        ListNode result = dummyHead.next;
-        dummyHead.next = null;
-        return result;
+        return dummyHead.next;
     }
-}}
+
+    public static void main(String[] args) {
+        // Example input nodes (manually created for demonstration)
+        ListNode l1 = new ListNode(2);
+        l1.next = new ListNode(4);
+        l1.next.next = new ListNode(3);  // Represents the number 342
+
+        ListNode l2 = new ListNode(5);
+        l2.next = new ListNode(6);
+        l2.next.next = new ListNode(4);  // Represents the number 465
+
+        ListNode result = addTwoNumbers(l1, l2);
+
+        // Output the result list
+        while (result != null) {
+            System.out.print(result.val);
+            if (result.next != null) {
+                System.out.print(" -> ");
+            }
+            result = result.next;
+        }
+        System.out.println();  // New line for clean output
+    }
+}
